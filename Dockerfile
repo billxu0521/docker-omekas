@@ -27,9 +27,9 @@ RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt && pecl install imagick && docker-php-ext-enable imagick 
 
 # Add the Omeka-S PHP code
-COPY ./omeka-s-3.1.0.zip /var/www/
-RUN unzip -q /var/www/omeka-s-3.1.0.zip -d /var/www/ \
-&&  rm /var/www/omeka-s-3.1.0.zip \
+COPY ./omeka-s-3.2.0.zip /var/www/
+RUN unzip -q /var/www/omeka-s-3.2.0.zip -d /var/www/ \
+&&  rm /var/www/omeka-s-3.2.0.zip \
 &&  rm -rf /var/www/html/ \
 &&  mv /var/www/omeka-s/ /var/www/html/
 
@@ -37,9 +37,9 @@ COPY ./imagemagick-policy.xml /etc/ImageMagick/policy.xml
 COPY ./.htaccess /var/www/html/.htaccess
 
 # Add some Omeka modules
-COPY ./BlockPlus-3.3.12.0.zip /var/www/html/modules/
-RUN unzip -q /var/www/html/modules/BlockPlus-3.3.12.0.zip -d /var/www/html/modules/ \
-	&&  rm /var/www/html/modules/BlockPlus-3.3.12.0.zip
+# COPY ./BlockPlus-3.3.12.0.zip /var/www/html/modules/
+# RUN unzip -q /var/www/html/modules/BlockPlus-3.3.12.0.zip -d /var/www/html/modules/ \
+# 	&&  rm /var/www/html/modules/BlockPlus-3.3.12.0.zip
 
 # # # Add some themes
 COPY ./theme-cozy-v1.5.3.zip /var/www/html/themes/
